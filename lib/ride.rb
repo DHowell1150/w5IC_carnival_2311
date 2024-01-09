@@ -4,7 +4,8 @@ class Ride
               :min_height, 
               :admission_fee, 
               :excitement, 
-              :total_revenue
+              :total_revenue,
+              :rider_log
 
   def initialize(data)
       @name = data[:name] 
@@ -17,9 +18,9 @@ class Ride
 
   def board_rider(visitor)
     if visitor.tall_enough?(@min_height) && (visitor.spending_money >= @admission_fee) && visitor.preferences.include?(@excitement)
-    @rider_log[:visitor] += 1
-    @total_revenue += @admission_fee
-    visitor.spending_money -= @admission_fee
+      @rider_log[visitor] += 1
+      @total_revenue += @admission_fee
+      visitor.spending_money -= @admission_fee
     end
   end
 

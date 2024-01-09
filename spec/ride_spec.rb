@@ -30,7 +30,7 @@ RSpec.describe Ride do
   end
 
   describe '#board_rider' do
-    it '#board_rider based on visitor.preference' do
+    it '#board_rider based on visitor.attributes matching ride' do
       @visitor1.add_preference(:gentle)
       @visitor2.add_preference(:gentle)
 
@@ -38,35 +38,32 @@ RSpec.describe Ride do
       @ride1.board_rider(@visitor2)
       @ride1.board_rider(@visitor1)
 
-      expect(@ride1.rider_log).to eq({visitor1 => 1, @visitor2 => 1})
-
+      expect(@ride1.rider_log).to eq({@visitor1 => 2, @visitor2 => 1})
     end
 
     it "adds to #total_revenue" do
-    @ride1.board_rider(@visitor1)
-    @ride1.board_rider(@visitor2)
-    @ride1.board_rider(@visitor1)
+      @ride1.board_rider(@visitor1)
+      @ride1.board_rider(@visitor2)
+      @ride1.board_rider(@visitor1)
+      
+      
+      expect(@ride1.total_revenue).to eq(3)
+    end
     
-    expect(@visitor1.spending_money).to eq(8)
-    expect(@visitor2.spending_money).to eq(4)
-    
-    expect(@ride1.total_revenue).to eq(3)
+    it 'deducts admission_fee from visitor.spending_money' do
+      @ride1.board_rider(@visitor1)
+      @ride1.board_rider(@visitor2)
+      @ride1.board_rider(@visitor1)
+      
+      expect(@visitor1.spending_money).to eq(8)
+      expect(@visitor2.spending_money).to eq(4)
     end
   end
 end
 
-# 2. Rides have a rider log that tracks who has ridden the ride and how many times
-
-# 3. A rider's spending money is reduced by the admission fee when they board a ride
-
-# 4. A rider does not board if they are not tall enough or do not have a matching preference for the ride's excitement level or do not have enough spending money left. 
-
-# 5. A ride can calculate the total revenue it has earned
-
-
 # expect(@visitor2.add_preference(:thrilling)).to eq([:gentle, :thrilling])
 
-# expect(@visitor3.add_preference(:thrilling)).to eq()
+# expect(@visitor3.add_preference(:thrilling)).to eq(:thrilling)
 # #=> [:thr])
 
 # @ride3.board_rider(@visitor1)
