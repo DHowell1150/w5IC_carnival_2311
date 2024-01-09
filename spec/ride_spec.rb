@@ -52,25 +52,37 @@ RSpec.describe Ride do
     end
 
     it "adds to #total_revenue" do
+      @visitor1.add_preference(:gentle)
+      @visitor2.add_preference(:gentle)
+
       @ride1.board_rider(@visitor1)
       @ride1.board_rider(@visitor2)
       @ride1.board_rider(@visitor1)
       expect(@ride1.total_revenue).to eq(3)
 
+      @visitor2.add_preference(:thrilling)
+      @visitor3.add_preference(:thrilling)
+
       @ride3.board_rider(@visitor1)
       @ride3.board_rider(@visitor2)
       @ride3.board_rider(@visitor3)
-      expect(@ride3.total_revenue).to eq(6)
+      expect(@ride3.total_revenue).to eq(2)
 
     end
     
     it 'deducts admission_fee from visitor.spending_money' do
+      @visitor1.add_preference(:gentle)
+      @visitor2.add_preference(:gentle)
+
       @ride1.board_rider(@visitor1)
       @ride1.board_rider(@visitor2)
       @ride1.board_rider(@visitor1)
       
       expect(@visitor1.spending_money).to eq(8)
       expect(@visitor2.spending_money).to eq(4)
+
+      @visitor2.add_preference(:thrilling)
+      @visitor3.add_preference(:thrilling)
 
       @ride3.board_rider(@visitor1)
       @ride3.board_rider(@visitor2)
