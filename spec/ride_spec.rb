@@ -3,18 +3,13 @@ require 'spec_helper'
 RSpec.describe Ride do
   before do
     @ride1 = Ride.new({ name: 'Carousel', min_height: 24, admission_fee: 1, excitement: :gentle })
-    #=> #<Ride:0x000000015a136ab8 @admission_fee=1, @excitement=:gentle, @min_height=24, @name="Carousel", @rider_log={}>
     @ride2 = Ride.new({ name: 'Ferris Wheel', min_height: 36, admission_fee: 5, excitement: :gentle })
-    #<Ride:0x0000000159a0cd00 @admission_fee=5, @excitement=:gentle, @min_height=36, @name="Ferris Wheel", @rider_log={}>
     @ride3 = Ride.new({ name: 'Roller Coaster', min_height: 54, admission_fee: 2, excitement: :thrilling })
-    #=> #<Ride:0x0000000159ae7a68 @admission_fee=2, @excitement=:thrilling, @min_height=54, @name="Roller Coaster", @rider_log={}>
 
     @visitor1 = Visitor.new('Bruce', 54, '$10')
-    #=> #<Visitor:0x000000015a16e918 @height=54, @name="Bruce", @preferences=[], @spending_money=10>
     @visitor2 = Visitor.new('Tucker', 36, '$5')
-    #=> #<Visitor:0x000000015a11c5c8 @height=36, @name="Tucker", @preferences=[], @spending_money=5>
     @visitor3 = Visitor.new('Penny', 64, '$15')
-    #=> #<@Visitor:0x0000000159a852a0 @height=64, @name="Penny", @preferences=[], @spending_money=15
+
   end
 
   it 'exists' do
