@@ -181,7 +181,7 @@ Use TDD to create a `Carnival` class that adds the following functionality:
 
 Additionally, use TDD to add the following functionality to the `Carnival` class. A passing challenge will complete *at least* one of the following. We recommend completing more than one if you have time.
 
-1. A carnival can tell us its most popular ride. Most popular will be the ride that has been riden the most amount of times by all visitors (not based on unique riders).
+1. A carnival can tell us its most popular ride. Most popular will be the ride that has been ridden the most amount of times by all visitors (not based on unique riders).
 1. A carnival can tell us its most profitable ride
 1. A carnival can calculate the total revenue earned from all its rides.
 

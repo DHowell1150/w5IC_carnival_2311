@@ -8,7 +8,10 @@ class Carnival
   end
 
   def add_ride(ride)
-    @rides << ride.name
+    @rides << ride
   end
 
+  def most_popular_ride
+    require 'pry' ; binding.pry
+  end
 end
