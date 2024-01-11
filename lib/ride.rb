@@ -23,9 +23,4 @@ class Ride
       visitor.spending_money -= @admission_fee
     end
   end
-
-  def total_revenue
-    @total_revenue
-  end
-
 end
